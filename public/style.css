@@ -4,12 +4,12 @@
     height: 120px;
     transform-style: preserve-3d;
     transition: .3s ease;
+    transition: .4s linear;
     cursor: pointer;
 }
 
 .card:hover{
     transform: scale(1.03);
-    transition: .4s linear;
 }
 
 .card__front, .card__back, .image-icon{

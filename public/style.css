@@ -1,0 +1,18 @@
+.card{
+    width: 120px;
+    height: 120px;
+}
+
+.card__front, .card__back, .image-icon{
+    width: 100%;
+    height: 100%;
+}
+
+.card__front{
+    background-color: #000000;
+}
+
+.card__back{
+    background-color: teal;
+}
+

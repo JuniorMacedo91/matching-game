@@ -3,8 +3,8 @@
         gap: 6px;
     }
     .card{
-        width: 65px;
-        height: 65px;
+        width: 70px;
+        height: 70px;
     }
 
     .card__back::after{

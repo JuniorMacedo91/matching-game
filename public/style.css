@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
 *{
-    height: 100vh;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -9,86 +8,49 @@
 }
 
 .container{
-    position: relative;
+    height: 100vh;
     display: grid;
     place-content: center;
-    gap: 10px;
-    grid-template-columns: auto auto auto auto  ;
-    background-color: black;
+
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+
+    background-color: #1d1d29;
 }
 
 .card{
     position: relative;
     width: 110px;
     height: 110px;
-    transform-style: preserve-3d;
-    transition: .4s linear;
     cursor: pointer;
 }
 
-.card:hover{
-    transform: scale(1.03);
-    box-shadow: 0px 0px 10px #535FE6;
-    border-radius: 10px;
-}
-
-.card__front, .card__back, .image-icon{
-    position: absolute;
+.card__front, .card__back{
+    /* position: absolute; */
     display: grid;
     place-items: center;
     width: 100%;
     height: 100%;
-    border-radius: 10px;
-    backface-visibility: hidden;
+    border-radius: 7px;
+    box-shadow: 4px 4px 10px rgb(0, 0, 0, .3);
 }
 
 .card__front{
-    transform: rotateY(180deg);
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 }
 
 .card__back{
-    position: relative;
-    border: 1px solid #535FE6;
-    overflow: hidden;
+    background-color: #3c3c4f;
 }
 
-.flip{
-    transform: rotateY(180deg);
+.card__back:hover{
+    transform:scale(1.06);
+    transition: .2s linear;
 }
 
-.fa-dice{
-    font-size: 7rem;
-    margin-left: -1rem;
-}
-
-#game-over-screen{
-    position: absolute;
-    display: none;
-    place-items: center;
-    place-content: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(11, 11, 11, 0.605);
-}
-
-#game-over-screen p{
-    font-size: 2rem;
+.card__back::after{
+    content: '\f0eb';
+    font-family: "FontAwesome";
+    font-size: 3rem;
     color: #fff;
-}
-
-#play{
-    margin: 1rem;
-    padding: 10px;
-    font-size: 1.4rem;
-    color: #fff;
-    border: 2px solid white;
-    background-color: transparent;
-    border-radius: 5px 20px;
-    box-shadow: 0px 8px 10px rgba(11, 11, 11, .25);
-    cursor: pointer;
-}
-
-#play:hover{
-    border: 2px solid rgb(255, 196, 0);
-    background-color: rgb(255, 196, 0);
 }

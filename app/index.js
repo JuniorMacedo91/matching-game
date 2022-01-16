@@ -1,8 +1,7 @@
 const container = document.querySelector('.container')
-const FRONT = 'card_front'
-const BACK = 'card_back'
 
-const stacks = ['boostrap',
+const stacks = [
+    'bootstrap',
     'css',
     'electron',
     'firebase',
@@ -22,12 +21,33 @@ function startGame() {
     allCards = creatCards(stacks)
     suffle(allCards)
     displayCard(allCards)
-
-    console.log(allCards)
 }
 
 function displayCard(allCards) {
     
+    allCards.forEach(card =>{
+        const cardElement = document.createElement('div')
+        cardElement.id = card.id
+        cardElement.classList.add('card')
+        cardElement.dataset.icon = card.icon
+
+        const cardFront = document.createElement('div')
+        const imageFront = document.createElement('img')
+        cardFront.classList.add('card__front')
+        imageFront.setAttribute('src', `./public/assets/${card.icon}.png`)
+        cardFront.appendChild(imageFront)
+        cardElement.appendChild(cardFront)
+
+        const cardBack = document.createElement('div')
+        cardBack.classList.add('card__back')
+        cardElement.appendChild(cardBack)
+        
+        container.appendChild(cardElement)
+
+        cardElement.addEventListener('click', flip)
+    })
+
+    console.log(allCards)
 }
 
 function suffle(allCards) {
@@ -69,5 +89,9 @@ function  creatPairOfStacks(stack) {
 
 function creatId(stack) {
     return stack + parseInt(Math.random() * 1000)
+}
+
+function flip() {
+    this.classList.add('flip-card')
 }
 

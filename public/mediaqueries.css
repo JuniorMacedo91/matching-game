@@ -1,0 +1,13 @@
+@media screen and (max-width:576px) {
+    .container{
+        gap: 6px;
+    }
+    .card{
+        width: 65px;
+        height: 65px;
+    }
+
+    .card__back::after{
+        font-size: 1.5rem;
+    }
+}

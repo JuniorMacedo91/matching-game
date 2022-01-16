@@ -1,4 +1,4 @@
 # matching-game
-Matching game is one of the most popular game, playing for everybody to improve memory.
+Matching game is one of the most popular game, playing for everybody to improve memory skills.
 
 Building

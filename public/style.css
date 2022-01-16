@@ -23,11 +23,13 @@
     width: 110px;
     height: 110px;
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: .4s linear;
     cursor: pointer;
 }
 
 .card__front, .card__back{
-    /* position: absolute; */
+    position: absolute;
     display: grid;
     place-items: center;
     width: 100%;

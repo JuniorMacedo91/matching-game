@@ -46,8 +46,6 @@ function displayCard(allCards) {
 
         cardElement.addEventListener('click', flip)
     })
-
-    console.log(allCards)
 }
 
 function suffle(allCards) {

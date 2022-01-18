@@ -67,6 +67,11 @@
     filter: contrast(2);
 }
 
+img{
+    width: inherit;
+    padding: 10px;
+}
+
 .flip-card{
     transform:rotateY(180deg);
 }

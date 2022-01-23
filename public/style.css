@@ -76,20 +76,6 @@ img{
     transform:rotateY(180deg);
 }
 
-.game-over-screen{
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(10px);
-}
-
-.fade-in{
-    display: grid;
-    place-content: center;
-    place-items: center;
-}
-
 h1{
     max-width: 90%;
     font-size: 5vw;

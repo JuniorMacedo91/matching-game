@@ -1,55 +1,35 @@
 const container = document.querySelector('.container')
 
 const stacks = [
-    'bootstrap',
-    'css',
-    'electron',
-    'firebase',
-    'html',
-    'javascript',
-    'jquery',
-    'mongo',
-    'node',
-    'react'
+    'bootstrap','css','electron','firebase','html','javascript','jquery','mongo','node','react'
 ]
 
-let allCards = null;
+let allCards = ' ';
+let firstCard, secondCard;
+let blockCard = false;
 
-startGame()
+playGame()
 
-function startGame() {
-    allCards = creatCards(stacks)
-    suffle(allCards)
-    displayCard(allCards)
+function playGame() {
+    suffle(stacks)
+    displayCards()
 }
 
-function displayCard(allCards) {
-    
-    allCards.forEach(card =>{
-        const cardElement = document.createElement('div')
-        cardElement.id = card.id
-        cardElement.classList.add('card')
-        cardElement.dataset.icon = card.icon
-
-        const cardFront = document.createElement('div')
-        const imageFront = document.createElement('img')
-        cardFront.classList.add('card__front')
-        imageFront.setAttribute('src', `./public/assets/${card.icon}.png`)
-        cardFront.appendChild(imageFront)
-        cardElement.appendChild(cardFront)
-
-        const cardBack = document.createElement('div')
-        cardBack.classList.add('card__back')
-        cardElement.appendChild(cardBack)
-        
-        container.appendChild(cardElement)
-
-        cardElement.addEventListener('click', flip)
+function displayCards() {
+    stacks.forEach(stack =>{
+        allCards += `<div class="card" data-icon="${stack}">
+                        <div class="card__front">
+                            <img src="./public/assets/${stack}.png">
+                        </div>
+                        <div class="card__back"></div>
+                    </div>`
     })
+    container.innerHTML = allCards + allCards
 }
 
-function suffle(allCards) {
-    let currentIndex = allCards.length
+
+function suffle(stacks) {
+    let currentIndex = stacks.length
     let randomIndex = 0;
 
     while(currentIndex !== 0){
@@ -57,39 +37,34 @@ function suffle(allCards) {
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex--;
 
-        [allCards[randomIndex], allCards[currentIndex]] = [allCards[currentIndex], allCards[randomIndex]]
+        [stacks[randomIndex], stacks[currentIndex]] = [stacks[currentIndex], stacks[randomIndex]]
     }
 }
 
-function creatCards(stacks) {
-    
-    const cards = []
+const cards = document.querySelectorAll('.card')
 
-    stacks.forEach(stack =>{
-        cards.push(creatPairOfStacks(stack))
-    })
-
-    return cards.flatMap(stack => stack)
-
-}
-
-function  creatPairOfStacks(stack) {
-    return [{
-        id: creatId(stack),
-        icon: stack,
-        flipped: false
-    },{
-        id: creatId(stack),
-        icon: stack,
-        flipped: false
-    }]
-}
-
-function creatId(stack) {
-    return stack + parseInt(Math.random() * 1000)
-}
+cards.forEach(card => card.addEventListener('click', flip))
 
 function flip() {
     this.classList.add('flip-card')
+    if(!firstCard){
+        firstCard = this
+        return false
+    }
+    secondCard = this
+    checkMatch()
 }
 
+function checkMatch() {
+    if(firstCard.dataset.icon === secondCard.dataset.icon){
+        return true
+    }
+    disabledCard()
+}
+
+function disabledCard() {
+    setTimeout(() => {
+        firstCard.classList.remove('flip-card')
+        secondCard.classList.remove('flip-card')
+    }, 1000);
+}

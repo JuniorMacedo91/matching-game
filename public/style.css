@@ -72,7 +72,7 @@ img{
     padding: 10px;
 }
 
-.flip-card{
+.card.flip-card{
     transform:rotateY(180deg);
 }
 

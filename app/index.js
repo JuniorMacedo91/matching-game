@@ -78,8 +78,3 @@ function  resetCards() {
     secondCard = null;
     blockCard = false
 }
-
-function gameOver() {
-    cards.filter(card => !card.dataset.icon !== ' ')
-
-}

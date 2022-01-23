@@ -23,7 +23,7 @@ The application was developed to improve logic by using JavaScript and how to us
 
 ## Responsive layout:
 <p align="center">
-  <img src="responsive.png" width="750px">
+  <img src="responsive.jpg" width="750px">
 </p>
   
 ## Skills:

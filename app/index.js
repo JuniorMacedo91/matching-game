@@ -27,7 +27,6 @@ function displayCards() {
     container.innerHTML = allCards + allCards
 }
 
-
 function suffle(stacks) {
     let currentIndex = stacks.length
     let randomIndex = 0;
@@ -46,6 +45,9 @@ const cards = document.querySelectorAll('.card')
 cards.forEach(card => card.addEventListener('click', flip))
 
 function flip() {
+    if(blockCard){
+        return false
+    }
     this.classList.add('flip-card')
     if(!firstCard){
         firstCard = this
@@ -57,7 +59,7 @@ function flip() {
 
 function checkMatch() {
     if(firstCard.dataset.icon === secondCard.dataset.icon){
-        return true
+        resetCards()
     }
     disabledCard()
 }
@@ -66,5 +68,13 @@ function disabledCard() {
     setTimeout(() => {
         firstCard.classList.remove('flip-card')
         secondCard.classList.remove('flip-card')
+        
+        resetCards()
     }, 1000);
+}
+
+function  resetCards() {
+    firstCard = null;
+    secondCard = null;
+    blockCard = false
 }
